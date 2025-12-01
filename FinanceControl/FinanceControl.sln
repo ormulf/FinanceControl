@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36127.28 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceControlData", "FinanceControlData\FinanceControlData.csproj", "{5A604F1E-706B-4444-B848-C1909F6BA2FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceControl.Domain", "FinanceControlData\FinanceControl.Domain.csproj", "{5A604F1E-706B-4444-B848-C1909F6BA2FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceControl.Infrastructure.Mongo", "FinanceControl.Infrastructure.Mongo\FinanceControl.Infrastructure.Mongo.csproj", "{F014ABC1-DAC7-4A58-92C1-538EC5778B07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceControl.Application", "FinanceControl.Application\FinanceControl.Application.csproj", "{C5310EF8-7258-428F-8A86-24589EC962A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceControl.Api", "FinanceControl.Api\FinanceControl.Api.csproj", "{83328A4F-E329-406A-B64C-83D4F721B54F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{5A604F1E-706B-4444-B848-C1909F6BA2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A604F1E-706B-4444-B848-C1909F6BA2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A604F1E-706B-4444-B848-C1909F6BA2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F014ABC1-DAC7-4A58-92C1-538EC5778B07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F014ABC1-DAC7-4A58-92C1-538EC5778B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F014ABC1-DAC7-4A58-92C1-538EC5778B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F014ABC1-DAC7-4A58-92C1-538EC5778B07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5310EF8-7258-428F-8A86-24589EC962A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5310EF8-7258-428F-8A86-24589EC962A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5310EF8-7258-428F-8A86-24589EC962A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5310EF8-7258-428F-8A86-24589EC962A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83328A4F-E329-406A-B64C-83D4F721B54F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83328A4F-E329-406A-B64C-83D4F721B54F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83328A4F-E329-406A-B64C-83D4F721B54F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83328A4F-E329-406A-B64C-83D4F721B54F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
