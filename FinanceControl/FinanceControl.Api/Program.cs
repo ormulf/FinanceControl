@@ -1,7 +1,8 @@
+using FinanceControl.Application.Services;
+using FinanceControl.Domain.Interfaces;
 using FinanceControl.Infrastructure.Mongo.Repositories;
 using FinanceControl.Infrastructure.Mongo.Settings;
-using FinanceControl.Domain.Interfaces;
-using FinanceControl.Application.Services;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
@@ -26,6 +27,9 @@ builder.Services.AddScoped<IExpanseRepository, ExpanseRepository>();
 // Application services
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<ExpanseService>();
+
+builder.Services.AddAutoMapper(typeof(FinanceControl.Application.Mapping.CategoryProfile));
+builder.Services.AddAutoMapper(typeof(FinanceControl.Application.Mapping.ExpanseProfile));
 
 // Add services to the container.
 

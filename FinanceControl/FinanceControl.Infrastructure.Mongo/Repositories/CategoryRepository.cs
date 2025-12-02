@@ -14,13 +14,13 @@ namespace FinanceControl.Infrastructure.Mongo.Repositories
 
         public async Task AddAsync(Category entity) => await _collection.InsertOneAsync(entity);
 
-        public async Task DeleteAsync(int id) =>
+        public async Task DeleteAsync(string id) =>
             await _collection.DeleteOneAsync(c => c.Id == id);
 
         public async Task<IEnumerable<Category>> GetAllAsync() =>
             await _collection.Find(_ => true).ToListAsync();
 
-        public async Task<Category?> GetByIdAsync(int id) =>
+        public async Task<Category?> GetByIdAsync(string id) =>
             await _collection.Find(c => c.Id == id).FirstOrDefaultAsync();
 
         public async Task UpdateAsync(Category entity) =>

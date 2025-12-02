@@ -4,6 +4,6 @@ namespace FinanceControl.Domain.Interfaces
 {
     public interface IExpanseRepository : IRepositoryBase<Expanse>
     {
-        Task<IEnumerable<Expanse>> GetByCategoryIdAsync(int categoryId);
+        Task<IEnumerable<Expanse>> GetByCategoryIdAsync(string categoryId);
     }
 }

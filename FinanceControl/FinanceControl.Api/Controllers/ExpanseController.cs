@@ -1,4 +1,5 @@
-﻿using FinanceControl.Application.Services;
+﻿using FinanceControl.Application.DTOs;
+using FinanceControl.Application.Services;
 using FinanceControl.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -16,20 +17,20 @@ namespace FinanceControl.Api.Controllers
         public async Task<IActionResult> Get() => Ok(await _service.GetAllAsync());
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id) => Ok(await _service.GetByIdAsync(id));
+        public async Task<IActionResult> Get(string id) => Ok(await _service.GetByIdAsync(id));
 
         [HttpGet("by-category/{categoryId}")]
-        public async Task<IActionResult> GetByCategory(int categoryId) => Ok(await _service.GetByCategoryIdAsync(categoryId));
+        public async Task<IActionResult> GetByCategory(string categoryId) => Ok(await _service.GetByCategoryIdAsync(categoryId));
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Expanse e)
+        public async Task<IActionResult> Post([FromBody] CreateExpanseDto e)
         {
             await _service.CreateAsync(e);
-            return CreatedAtAction(nameof(Get), new { id = e.Id }, e);
+            return NoContent();
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Expanse e)
+        public async Task<IActionResult> Put(string id, [FromBody] ExpanseDto e)
         {
             if (id != e.Id) return BadRequest();
             await _service.UpdateAsync(e);
@@ -37,7 +38,7 @@ namespace FinanceControl.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
             await _service.DeleteAsync(id);
             return NoContent();

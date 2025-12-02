@@ -1,10 +1,9 @@
 ﻿namespace FinanceControl.Application.DTOs
 {
-    public class CategoryDto
+    public class CreateCategoryDto
     {
-        public string? Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public float Limit { get; set; }
-        public int Type { get; set; }  // enum convertido para int
+        public int Type { get; set; }
     }
 }
