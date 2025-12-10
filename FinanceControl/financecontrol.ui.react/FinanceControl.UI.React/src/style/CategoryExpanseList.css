@@ -1,0 +1,56 @@
+.expanse-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9000;
+  }
+
+  .expanse-container {
+    background: #fff;
+    width: 85%;
+    max-width: 700px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    animation: fadeIn .25s ease-out;
+  }
+
+  .expanse-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .close-btn {
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  .expanse-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .expanse-table th,
+  .expanse-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+
+  .empty-msg {
+    margin-top: 20px;
+    font-style: italic;
+    text-align: center;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(.95); }
+    to { opacity: 1; transform: scale(1); }
+  }

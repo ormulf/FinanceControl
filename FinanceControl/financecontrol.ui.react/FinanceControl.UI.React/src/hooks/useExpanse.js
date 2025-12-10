@@ -1,11 +1,8 @@
+import { useCategoryContext } from "../contexts/CategoryContext";
+
 const useExpanse = () => {
-    const postExpanse = async (expanse) => {
-        await fetch("https://localhost:7176/api/expanse", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(expanse)
-    });
-    }
-    return { postExpanse };
+  const { postExpanse } = useCategoryContext();
+  return { postExpanse };
 };
+
 export default useExpanse;

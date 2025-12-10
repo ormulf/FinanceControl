@@ -1,35 +1,30 @@
 import "./App.css";
+import { CategoryProvider } from "./contexts/CategoryContext";
 import AddCategory from "./components/addCategory";
 import AddExpanse from "./components/addExpanse";
 import Summary from "./components/summary";
-import useCategory from "./hooks/useCategory";
+import { useCategoryContext } from "./contexts/CategoryContext";
 import LoadingIndicator from "./components/loadingIndicator";
 import loadingStatus from "./helpers/loadingStatus";
 
-function App() {  
-  const { categories, categorySummary, postCategory, loadingStateCategorySummary, refreshSummary } = useCategory();
-  if (loadingStateCategorySummary !== loadingStatus.loaded){
-    return <LoadingIndicator loadingState={loadingStateCategorySummary} />
-  }
+function AppInner() {
+  const { status } = useCategoryContext();
 
-  const onRefreshClick = () => {
-    refreshSummary();
-  };
-        
+  if (status !== loadingStatus.loaded) return <LoadingIndicator />;
+
   return (
-    <>
-      <button
-          className="btn btn-primary"
-          onClick={onRefreshClick}
-        >
-          Refresh
-        </button>
-      <AddCategory postCategory={postCategory} refreshSummary={refreshSummary}/>
-      <AddExpanse categories={categories} refreshSummary={refreshSummary} />
-      <Summary categorySummary={categorySummary} />
-      
+    <>      
+      <AddCategory />
+      <AddExpanse />
+      <Summary />
     </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <CategoryProvider>
+      <AppInner />
+    </CategoryProvider>
+  );
+}

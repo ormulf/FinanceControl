@@ -190,4 +190,15 @@ section {
   .rscCategory {
     width: 200px;
   }
+
+  .clickable-row {
+    cursor: pointer;
+  }
+
+  .clickable-row:hover {
+    background: #f3f3f3;
+  }
+
+  
+
 }
