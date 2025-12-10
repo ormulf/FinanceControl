@@ -16,6 +16,15 @@ namespace FinanceControl.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get() => Ok(await _service.GetAllAsync());
 
+        [Route("summary")]
+        [HttpGet]
+        public async Task<IActionResult> GetMonthlySummary([FromQuery] int month, [FromQuery] int year)
+        {
+            var monthyToReport = new DateTime(year, month, 1);
+            var result = await _service.GetSummary(monthyToReport);
+            return Ok(result);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id) => Ok(await _service.GetByIdAsync(id));
 

@@ -2,6 +2,7 @@
 using FinanceControl.Application.DTOs;
 using FinanceControl.Domain.Entities;
 using FinanceControl.Domain.Interfaces;
+using System.Collections.Generic;
 
 
 namespace FinanceControl.Application.Services
@@ -43,5 +44,28 @@ namespace FinanceControl.Application.Services
         }
 
         public async Task DeleteAsync(string id) => await _repo.DeleteAsync(id);
+
+        public async Task<CategoryMonthlySummaryListDto> GetSummary(DateTime monthToReport)
+        {
+            var summary = await _repo.GetCategorySummaryAsync(monthToReport);
+
+            var summaryMapped = summary.Select(s => new CategoryMonthlySummaryDto
+            {
+                Id = s.Id,
+                Name = s.Name,
+                Limit = s.Limit,
+                Type = s.Type,
+                TotalExpanses = s.TotalExpanses
+            });
+
+            var categoryMonthlySummaryListDto = new CategoryMonthlySummaryListDto();
+            categoryMonthlySummaryListDto.TotalExpanses = summaryMapped.Sum(s => s.TotalExpanses);
+            categoryMonthlySummaryListDto.Budget = summaryMapped.Sum(s => s.Limit);
+            categoryMonthlySummaryListDto.Indispensable = summaryMapped.Where(c=>c.Type== Domain.Enums.CategoryType.Indispensable).OrderBy(c=>c.Name).ToList();
+            categoryMonthlySummaryListDto.Signature = summaryMapped.Where(c => c.Type == Domain.Enums.CategoryType.Signature).OrderBy(c => c.Name).ToList();
+            categoryMonthlySummaryListDto.Extra = summaryMapped.Where(c => c.Type == Domain.Enums.CategoryType.Extra).OrderBy(c => c.Name).ToList();
+
+            return categoryMonthlySummaryListDto;
+        }
     }
 }
